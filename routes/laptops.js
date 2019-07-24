@@ -1,4 +1,4 @@
-const router = require('express').Router;
+const router = require('express').Router();
 let   Laptop = require('../models/laptop.model');
 
 router.route('/').get((req, res) => {
@@ -12,8 +12,8 @@ router.route('/add').post((req, res) => {
 
     const newLaptop = new Laptop({brand});
 
-    Laptop.save()
-        .then(() => res.json('Successfully Added Laptop'))
+    newLaptop.save()
+        .then(() => res.json('Successfully Added ' + newLaptop.brand[0].toUpperCase() + newLaptop.brand.substring(1)))
         .catch(err => res.status(400).json('ERROR ' + err));
 });
 
