@@ -24,7 +24,7 @@ mongoose.connect(dbRoute, {useNewUrlParser:true, useCreateIndex: true}).then(()=
 });
 
 //REQUIRING ROUTES
-const laptopRoutes = require('../Backend/routes/laptops');
+const laptopRoutes = require('../store-react-backend/routes/laptops');
 
 //USING ROUTES
 app.use('/laptops', laptopRoutes);
