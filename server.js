@@ -25,8 +25,10 @@ mongoose.connect(dbRoute, {useNewUrlParser:true, useCreateIndex: true}).then(()=
 
 //REQUIRING ROUTES
 const laptopRoutes = require('../Backend/routes/laptops');
+const contactRoutes = require('../Backend/routes/contactForm');
 
 //USING ROUTES
+app.use('/', contactRoutes);
 app.use('/laptops', laptopRoutes);
 
 //APP LISTENER
