@@ -18,8 +18,20 @@ router.route('/:id').get((req, res) => {
 //ADD LAPTOP
 router.route('/add').post((req, res) => {
     const brand = req.body.brand;
+    const name = req.body.name;
+    const image = req.body.image;
+    const original = req.body.original;
+    const savings = req.body.savings;
+    const price = req.body.price;
 
-    const newLaptop = new Laptop({brand});
+    const newLaptop = new Laptop({
+        brand,
+        name,
+        image,
+        original,
+        savings,
+        price
+    });
 
     newLaptop.save()
         .then(() => res.json('Successfully Added ' + newLaptop.brand))
@@ -30,7 +42,12 @@ router.route('/add').post((req, res) => {
 router.route('/update/:id').post((req, res) => {
     Laptop.findByIdAndUpdate(req.params.id)
         .then(laptop => {
-            laptop.brand = req.body.brand;
+            const brand = req.body.brand;
+            const name = req.body.name;
+            const image = req.body.image;
+            const original = req.body.original;
+            const savings = req.body.savings;
+            const price = req.body.price;
 
             laptop.save()
             .then(() => res.json(laptop.brand + ' has been updated!'))
