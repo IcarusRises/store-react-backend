@@ -38,16 +38,24 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('ERROR ' + err));
 });
 
+//EDIT LAPTOP
+router.route('/edit/:id').get((req, res) => {
+    Laptop.findById(req.params.id)
+    .then(laptop => res.json(laptop))
+    .catch(err => console.log((err)))
+
+})
+
 //UPDATE LAPTOP
 router.route('/update/:id').post((req, res) => {
     Laptop.findByIdAndUpdate(req.params.id)
         .then(laptop => {
-            const brand = req.body.brand;
-            const name = req.body.name;
-            const image = req.body.image;
-            const original = req.body.original;
-            const savings = req.body.savings;
-            const price = req.body.price;
+            laptop.brand = req.body.brand;
+            laptop.name = req.body.name;
+            laptop.image = req.body.image;
+            laptop.original = req.body.original;
+            laptop.savings = req.body.savings;
+            laptop.price = req.body.price;
 
             laptop.save()
             .then(() => res.json(laptop.brand + ' has been updated!'))
