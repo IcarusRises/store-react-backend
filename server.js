@@ -27,11 +27,13 @@ mongoose.connect(dbRoute, {useNewUrlParser:true, useCreateIndex: true}).then(()=
 
 const laptopRoutes = require('../Backend/routes/laptops');
 const contactRoutes = require('../Backend/routes/contactForm');
+const searchRoutes = require('../Backend/routes/search');
 
 
 //USING ROUTES
 app.use('/', contactRoutes);
 app.use('/laptops', laptopRoutes);
+app.use('/search', searchRoutes);
 
 //APP LISTENER
 app.listen(process.env.PORT || PORT, () => {
